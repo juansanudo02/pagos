@@ -55,7 +55,7 @@ module.exports = {
 		}),
 
 		new Dotenv({
-			path: './.env',
+			path: '.env',
 			safe: true,
 			systemvars: true,
 			defaults: false,

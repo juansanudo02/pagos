@@ -2,6 +2,8 @@ import React,{ useContext } from 'react'
 import '../styles/components/Checkout.css'
 import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
+import { Helmet } from 'react-helmet';
+import MetaHead from '../components/MetaHead'
 
 const Checkout = () => {
   const { state, removeFromCart } = useContext(AppContext)
@@ -18,6 +20,11 @@ const Checkout = () => {
     return sum
   }
   return(
+    <>
+    <Helmet>
+      <title>Lista de pedido</title>
+
+    </Helmet>
     <div className="Checkout">
       <div className="Checkout-content">
        { cart.length > 0? <h3> Lista de pedidos</h3>: <h3>Sin pedidos...</h3>}
@@ -45,6 +52,7 @@ const Checkout = () => {
       )}
       
     </div>
+    </>
   )
 };
 
