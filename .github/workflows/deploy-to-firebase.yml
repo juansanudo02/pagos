@@ -13,10 +13,10 @@ jobs:
       - name: Build
         run: npm run build
       - name: Archive Production Artifact
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@main
         with:
-          name: dist
-          path: dist
+          name: build
+          path: build
   deploy:
     name: Deploy
     needs: build
@@ -25,13 +25,14 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@main
       - name: Download Artifact
-        uses: actions/download-artifact@master
+        uses: actions/download-artifact@main
         with:
-          name: dist
-          path: dist
+          name: build
+          path: build
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+        uses: w9jds/firebase-action@main
         with:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          
